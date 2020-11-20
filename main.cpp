@@ -4,15 +4,20 @@
 double my_pow(double n, int p) 
 {
     double r=1;
-    if(!std::signbit(p)) 
+    bool sbit = std::signbit(p);
+    if(sbit) p*=-1;
+
+    while(p > 0) 
     {
-	while(p--) 
-	    r*=n;
+	if(p%2)
+	    if(sbit) 
+	        r/=n;
+	    else 
+	        r*=n;
+	n*=n;
+	p/=2;
     }
-    else {
-	while(p++)
-	    r/=n;
-    }
+
     return r;
 }
 
