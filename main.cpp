@@ -3,9 +3,12 @@
 double my_pow(double n, uint p) 
 {
     double r=1;
-    do 
-	r*=n;
-    while(--p);
+    do { 
+	if(p%2)
+	    r*=n;
+	n*=n;
+	p/=2;
+    } while(p > 0);
     return r;
 }
 
