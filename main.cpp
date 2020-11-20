@@ -1,18 +1,25 @@
 #include <iostream>
+#include <cmath>
 
-double my_pow(double n, uint p) 
+double my_pow(double n, int p) 
 {
     double r=1;
-    do 
-	r*=n;
-    while(--p);
+    if(!std::signbit(p)) 
+    {
+	while(p--) 
+	    r*=n;
+    }
+    else {
+	while(p++)
+	    r/=n;
+    }
     return r;
 }
 
 int main() 
 {
     double n;
-    uint p;
+    int p;
 
     std::cout << "N=";
     std::cin >> n;
